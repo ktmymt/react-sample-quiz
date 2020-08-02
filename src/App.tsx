@@ -27,6 +27,7 @@ const App = () => {
 
   console.log(questions);
 
+  // initialize quiz game
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
@@ -40,6 +41,7 @@ const App = () => {
     setLoading(false);
   }
 
+  // check the user answer, and set the answer to user answer array
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
@@ -58,7 +60,13 @@ const App = () => {
   }
 
   const nextQuestion = () => {
+    const nextQuestion = number + 1;
 
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
   }
 
   return (
